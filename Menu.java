@@ -5,8 +5,6 @@ import java.awt.event.ActionListener;
 
 public class Menu {
 
-
-
     static void createAndShowGUI() {
         JFrame frame = new JFrame("Game Menu");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -21,14 +19,14 @@ public class Menu {
         // Start Button
         JButton startButton = createMenuButton("Start");
         startButton.addActionListener(e -> {
-            startGame();
+              startGame();
             System.out.println("Game Started");
         });
 
         // High Score Button
         JButton highScoreButton = createMenuButton("High Score");
         highScoreButton.addActionListener(e -> {
-            showHighScore();
+//            showHighScore();
             System.out.println("High Score");
         });
 
@@ -55,6 +53,20 @@ public class Menu {
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         button.setMaximumSize(new Dimension(200, 50));
         return button;
+    }
+    public static void startGame(){
+        String heightStr = JOptionPane.showInputDialog(null, "Enter the height of the map:", "Map Height", JOptionPane.QUESTION_MESSAGE);
+        int height = Integer.parseInt(heightStr);
+
+        // Ask for width
+        String widthStr = JOptionPane.showInputDialog(null, "Enter the width of the map:", "Map Width", JOptionPane.QUESTION_MESSAGE);
+        int width = Integer.parseInt(widthStr);
+
+        // Now you can use these values to create and show the game window
+        PacmanMap.createAndShowGameWindow(height, width);
+
+
+
     }
 }
 
